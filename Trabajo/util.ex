@@ -42,4 +42,11 @@ defmodule Util do
       input(message, :integer)
     end
   end
+
+  def input_opcion(mensaje, opciones) do
+    args = ["-cp", ".", "Mensaje", "input", mensaje] ++ Enum.map(opciones, &to_string/1)
+    {respuesta, 0} = System.cmd("java", args)
+    String.trim(respuesta)
+  end
+
 end
